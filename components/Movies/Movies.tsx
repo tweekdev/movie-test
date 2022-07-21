@@ -8,7 +8,7 @@ const Input = styled.input`
     border: none;
     border-bottom: 1px solid ${({ theme }) => theme.text.primary};
     background-color: #ffffff;
-    color: ${({ theme }) => theme.text.primary};
+    color: #000;
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
