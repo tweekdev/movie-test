@@ -5,6 +5,7 @@ const light = {
     },
     text: {
         primary: '#000000',
+        secondary: '#FFFFFF',
     },
 };
 
@@ -15,6 +16,7 @@ const dark = {
     },
     text: {
         primary: '#ffffff',
+        secondary: '#ffffff',
     },
 };
 

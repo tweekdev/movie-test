@@ -2,19 +2,16 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const InputWrapper = styled.div`
+const Input = styled.input`
     width: 100%;
-    input {
-        width: 100%;
-        padding: 0.5rem;
-        border: none;
-        border-bottom: 1px solid ${({ theme }) => theme.text.primary};
-        background-color: ${({ theme }) => theme.bg.body};
-        color: ${({ theme }) => theme.text.primary};
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-    }
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid ${({ theme }) => theme.text.primary};
+    background-color: #ffffff;
+    color: ${({ theme }) => theme.text.primary};
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
 `;
 const MoviesWrapper = styled.div`
     display: grid;
@@ -32,33 +29,35 @@ const MovieWrapper = styled.div`
     flex-direction: column;
     align-items: center;
 `;
-
-const Title = styled.h3`
-    position: absolute;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1rem;
-    color: ${({ theme }) => theme.text.primary};
-    position: absolute;
-    top: 50%;
-    z-index: 1;
-    visibility: hidden;
-`;
 const MovieImage = styled.img`
     position: relative;
     width: 100%;
     height: 22rem;
     border-radius: 0.8rem;
-
-    &:hover {
+`;
+const TitleWrapper = styled.div`
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    opacity: 0;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    :hover {
         cursor: pointer;
-        opacity: 0.4;
-        #title {
-            visibility: visible;
-        }
+        opacity: 1;
     }
+`;
+
+const Title = styled.h3`
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: ${({ theme }) => theme.text.secondary};
 `;
 
 export const Movies: React.FC = () => {
@@ -99,13 +98,11 @@ export const Movies: React.FC = () => {
 
     return (
         <div>
-            <InputWrapper>
-                <input
-                    placeholder='Search for a movie'
-                    onChange={(e) => setMovieName(e.target.value)}
-                    type='text'
-                />
-            </InputWrapper>
+            <Input
+                placeholder='Search for a movie'
+                onChange={(e) => setMovieName(e.target.value)}
+                type='text'
+            />
             <MoviesWrapper>
                 {movies.length > 0 ? (
                     movies.map((movie: any) => (
@@ -115,7 +112,9 @@ export const Movies: React.FC = () => {
                                     <MovieImage
                                         src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                     />
-                                    <Title id='title'>{movie.title}</Title>
+                                    <TitleWrapper>
+                                        <Title id='title'>{movie.title}</Title>
+                                    </TitleWrapper>
                                 </MovieWrapper>
                             </Link>
                         </div>
