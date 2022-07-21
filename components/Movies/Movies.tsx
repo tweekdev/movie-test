@@ -2,6 +2,12 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+type Movie = {
+    id: string;
+    title: string;
+    poster_path: string;
+};
+
 const Input = styled.input`
     width: 100%;
     padding: 0.5rem;
@@ -105,7 +111,7 @@ export const Movies: React.FC = () => {
             />
             <MoviesWrapper>
                 {movies.length > 0 ? (
-                    movies.map((movie: any) => (
+                    movies.map((movie: Movie) => (
                         <div key={movie.id}>
                             <Link href={`/movie/${movie.id}`}>
                                 <MovieWrapper>
