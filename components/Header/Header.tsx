@@ -22,6 +22,9 @@ const Button = styled.button`
     padding: 0.5rem 1rem;
     border-radius: 0.8rem;
     cursor: pointer;
+    span {
+        color: ${({ theme }) => theme.text.primary};
+    }
 `;
 export const Header: React.FC<{
     setTheme: React.Dispatch<React.SetStateAction<string>>;
@@ -39,13 +42,9 @@ export const Header: React.FC<{
                 onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
             >
                 {theme === 'light' ? (
-                    <span aria-label='Light mode' role='img'>
-                        🌞
-                    </span>
+                    <span className='material-icons'>light_mode</span>
                 ) : (
-                    <span aria-label='Dark mode' role='img'>
-                        🌜
-                    </span>
+                    <span className='material-icons'>dark_mode</span>
                 )}
             </Button>
         </Nav>
